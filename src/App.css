@@ -212,3 +212,8 @@ img {
 .Button:focus {
   background-color: #303f9f;
 }
+
+.Loader {
+  width: 100px;
+  margin: 0 auto;
+}
