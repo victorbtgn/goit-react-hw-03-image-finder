@@ -39,10 +39,10 @@ export default class App extends Component {
   };
 
   fetchServicesApi = () => {
-    this.setState({ spinner: true });
-
     const { query, currentPage } = this.state;
     const option = { query, currentPage };
+
+    this.setState({ spinner: true });
 
     fetchImages(option)
       .then(images => {
