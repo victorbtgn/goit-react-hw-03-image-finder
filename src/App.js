@@ -3,6 +3,7 @@ import Searchbar from './component/Searchbar';
 import fetchImages from './services/pixabay-api/pixabay-api';
 import ImageGallery from './component/image-gallery';
 import Button from './common/Button';
+import Modal from './common/Modal';
 import Loader from 'react-loader-spinner';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import './App.css';
@@ -15,6 +16,7 @@ export default class App extends Component {
     haveImage: true,
     imagesLength: 0,
     spinner: false,
+    largeImage: null,
   };
 
   componentDidUpdate(prevProps, prevState) {
@@ -63,18 +65,29 @@ export default class App extends Component {
       .catch(error => console.log(error));
   };
 
+  onClickImage = evt => {
+    const largeImage = evt.target.dataset.src;
+    this.setState({ largeImage: largeImage });
+  };
+
+  closeModal = evt => {
+    this.setState({ largeImage: null });
+  };
+
   render() {
+    const { images, haveImage, imagesLength, spinner, largeImage } = this.state;
+
     return (
       <>
         <Searchbar onSubmit={this.formSubmit} />
 
-        {this.state.haveImage ? (
-          <ImageGallery images={this.state.images} />
+        {haveImage ? (
+          <ImageGallery images={images} onClick={this.onClickImage} />
         ) : (
           <h2 className="ImageGallery-title">Oops, no images</h2>
         )}
 
-        {this.state.spinner && (
+        {spinner && (
           <div className="Loader">
             <Loader
               type="MutatingDots"
@@ -85,11 +98,15 @@ export default class App extends Component {
           </div>
         )}
 
-        {this.state.images.length > 0 &&
-          this.state.imagesLength === 12 &&
-          !this.state.spinner && (
-            <Button title="Load more" onClick={this.fetchServicesApi} />
-          )}
+        {images.length > 0 && imagesLength === 12 && !spinner && (
+          <Button title="Load more" onClick={this.fetchServicesApi} />
+        )}
+
+        {largeImage && (
+          <Modal onClose={this.closeModal}>
+            <img src={largeImage} alt="" />
+          </Modal>
+        )}
       </>
     );
   }

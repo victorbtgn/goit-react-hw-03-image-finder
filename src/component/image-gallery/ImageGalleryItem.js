@@ -1,7 +1,13 @@
 import React from 'react';
 
-export default ({ webformatURL, largeImageURL }) => (
+export default ({ onClick, webformatURL, largeImageURL }) => (
   <li className="ImageGalleryItem">
-    <img src={webformatURL} alt="" className="ImageGalleryItem-image" />
+    <img
+      src={webformatURL}
+      alt=""
+      className="ImageGalleryItem-image"
+      data-src={largeImageURL}
+      onClick={onClick}
+    />
   </li>
 );
