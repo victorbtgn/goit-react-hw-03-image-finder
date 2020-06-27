@@ -1,2 +1,0 @@
-(this["webpackJsonpgoit-react-hw-03-image-finder"]=this["webpackJsonpgoit-react-hw-03-image-finder"]||[]).push([[0],[,,,function(e,n,t){e.exports=t(10)},,,,,function(e,n,t){},function(e,n,t){},function(e,n,t){"use strict";t.r(n);var r=t(0),i=t.n(r),a=t(2),c=t.n(a),o=(t(8),t(9),function(){return i.a.createElement("div",null,"Image finder")});c.a.render(i.a.createElement(i.a.StrictMode,null,i.a.createElement(o,null)),document.getElementById("root"))}],[[3,1,2]]]);
-//# sourceMappingURL=main.01935deb.chunk.js.map
