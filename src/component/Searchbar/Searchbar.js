@@ -14,7 +14,12 @@ export default class Searchbar extends Component {
   setQuery = evt => {
     evt.preventDefault();
 
-    this.props.onSubmit(this.state);
+    this.props.onSubmit(this.state.query);
+    this.reset();
+  };
+
+  reset = () => {
+    this.setState({ query: '' });
   };
 
   render() {

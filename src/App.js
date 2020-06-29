@@ -30,7 +30,7 @@ export default class App extends Component {
     }
   }
 
-  formSubmit = ({ query }) => {
+  formSubmit = query => {
     this.setState({
       query: query,
       currentPage: 1,
